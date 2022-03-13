@@ -5,9 +5,7 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = {
 	mode: 'production',
-	entry: {
-		star: './src/star'
-	},
+	entry: './src/babel.js',
 	module: {
     rules: [
       {
@@ -31,10 +29,10 @@ module.exports = {
     })
   ],
 	output: {
-		filename: '[name].min.js',
+		filename: 'StarlinkDashBoard.min.js',
     path: path.resolve(__dirname, 'min'),
 		library: {
-			name: 'Star',
+			name: 'StarlinkDashBoard',
 			type: 'umd',
 			export: 'default'
 		}
