@@ -2,10 +2,11 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	mode: 'production',
-	entry: './src/babel.js',
+	entry: './src/index.js',
 	module: {
     rules: [
       {
@@ -24,6 +25,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: 'star.min.css',
     })
@@ -31,10 +33,8 @@ module.exports = {
 	output: {
 		filename: 'StarlinkDashBoard.min.js',
     path: path.resolve(__dirname, 'min'),
-		library: {
-			name: 'StarlinkDashBoard',
-			type: 'umd',
-			export: 'default'
-		}
+    libraryExport: 'default',
+    libraryTarget: 'umd',
+    library: 'StarlinkDashBoard'  
 	}
 };
